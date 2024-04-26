@@ -26,12 +26,6 @@
 static volatile int networkActive;
 static void *tls_conn = NULL;
 
-/*
-
-    Alex Serial Routines to the Arduino
-
-    */
-
 // Prototype for sendNetworkData
 void sendNetworkData(const char *, int);
 
@@ -82,7 +76,6 @@ void handleResponse(TPacket *packet) {
 void handleUARTPacket(TPacket *packet) {
     switch (packet->packetType) {
     case PACKET_TYPE_COMMAND:
-        // Only we send command packets, so ignore
         break;
 
     case PACKET_TYPE_RESPONSE:

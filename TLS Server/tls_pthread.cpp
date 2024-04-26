@@ -23,10 +23,8 @@ void CRYPTO_thread_setup(void) {
     lock_cs = (pthread_mutex_t *)OPENSSL_malloc(CRYPTO_num_locks() * sizeof(pthread_mutex_t));
     lock_count = (long *)OPENSSL_malloc(CRYPTO_num_locks() * sizeof(long));
     if (!lock_cs || !lock_count) {
-        /* Nothing we can do about this...void function! */
         if (lock_cs)
             OPENSSL_free(lock_cs);
-
         if (lock_count)
             OPENSSL_free(lock_count);
         return;

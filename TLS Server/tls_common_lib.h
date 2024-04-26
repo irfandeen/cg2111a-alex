@@ -14,7 +14,8 @@
 #include <sys/types.h>
 
 
-/** These routines are not generally called from within reader/writer
+/*  
+    These routines are not generally called from within reader/writer
     threads.  In the event a function that requires an SSL structure
     to be passed in, the reader/writer thread should cast its conn
     argument to SSL * before calling the function **/

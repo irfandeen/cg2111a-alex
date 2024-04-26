@@ -6,13 +6,6 @@
 #include <sys/socket.h>
 #include <unistd.h>
 
-// Creates a new SSL session, attaches the client file
-// descriptor to it, initiates the connection and
-// returns the SSL session.
-// ctx = SSL context
-// fd = File descriptor for client connection.
-//
-
 SSL *connectSSL(SSL_CTX *ctx, int fd, const char *common_name) {
     SSL *ssl = SSL_new(ctx);
     SSL_set_fd(ssl, fd);

@@ -82,26 +82,10 @@ bool startSerial(const char *portName, int baudRate, int byteSize, char parity, 
         }
     }
 
-    // Disable hw flow control
     _serOptions.c_cflag &= ~CRTSCTS;
-
-    // Disable sw flow control
     _serOptions.c_iflag &= ~(IXON | IXOFF | IXANY);
-
-    // Clear canonical input mode
     _serOptions.c_lflag &= ~(ICANON | ECHO | ECHOE | ISIG);
-
-    /*
-// Set canonical input mode
-_serOptions.c_lflag |= ICANON; */
-
-    // Set canonical output mode
-    //_serOptions.c_oflag |= OPOST;
-
-    //_serOptions.c_oflag &= ~OPOST;
     _serOptions.c_oflag &= OPOST;
-
-    // Set the attributes
     tcsetattr(_fd, TCSANOW, &_serOptions);
     return true;
 }
