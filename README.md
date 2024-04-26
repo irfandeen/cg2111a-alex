@@ -33,7 +33,7 @@ char getch() {
 }
 ```
 
-Since a constant stream of movement commands arrive at the Arduino, the 
+Since a constant stream of movement commands arrive at the Arduino, the Arduino receives more movement commands than it can execute within a short period of time. As a result, the Arduino's UART will go out of sync with the Pi, causing either a `BAD MAGIC NUMBER` or `BAD CHECKSUM` error. To avoid this, a global `SEND_SUCCESS` flag was used on the client-side. The flag will be set to 0 till a response packet arrives, indicating sucessful transmission. While the flag is not set, any registered keypresses will be ignored till the response packet arrives.
 
 ### ROS Networking Initialization
 
@@ -53,10 +53,9 @@ This will configure the ROS publisher to publish the LiDAR data on `localhost:11
 2. A live point cloud plot was used to visualize the immediate surroundings of the robot, with a to-scale rectanlge super-imposed on the point cloud plot. This allowed bump-free navigation, and allowed the pilot to orientate the robot without the need for an IMU sensor. 
 
 </br>
-</br>
 
 ![Point Cloud & SLAM Running on MATLAB](/meta/SLAM.jpg)
-</br></br>
+</br>
 
 ### k-NN Colour Classification
 A kNN classifier was used to classify the unknown objects within the maze. Since there were only 3 distinct colours (red, green & white), we deemed a simple k-NN would be sufficiently accurate to predict obstacle colours. However, the k-NN classifier can be easily swapped out from the code for any other classifer appropriate for other use cases.
