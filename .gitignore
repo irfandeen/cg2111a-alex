@@ -1,0 +1,11 @@
+# ignores all keys & certificates
+**.csr
+**.pem
+**.key
+**.crt
+
+# ignores macOS file system metadata
+**.DS_Store
+
+# ignores swap files (if any)
+**.swp
